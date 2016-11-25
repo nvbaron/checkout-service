@@ -14,22 +14,22 @@ class CheckoutServiceSpec extends FlatSpec with Matchers{
   
 	"Cart price without discount" should "have zero price " in {
 		val shoppingCart = Nil 
-		assertResult(df.format(CheckoutService.getCartPrice(shoppingCart, null)))("0.00")
+		assertResult(df.format(CheckoutService.getCartPrice(shoppingCart, Nil)))("0.00")
 	}
 
 	it should "have 60 pence price" in {
 		val shoppingCart = "Apple" :: Nil  
-		assertResult(df.format(CheckoutService.getCartPrice(shoppingCart, null)))("0.60")
+		assertResult(df.format(CheckoutService.getCartPrice(shoppingCart, Nil)))("0.60")
 	}
 
 	it should "have 85 pence price" in {
 		val shoppingCart = "Apple" :: "Orange" :: Nil 
-		assertResult(df.format(CheckoutService.getCartPrice(shoppingCart, null)))("0.85")
+		assertResult(df.format(CheckoutService.getCartPrice(shoppingCart, Nil)))("0.85")
 	}
 
 	it should "have 2.05 pounds price" in {
 		val shoppingCart = "Apple" :: "Apple" :: "Orange" :: "Apple" :: Nil
-		assertResult(df.format(CheckoutService.getCartPrice(shoppingCart, null)))("2.05")
+		assertResult(df.format(CheckoutService.getCartPrice(shoppingCart, Nil)))("2.05")
 	}
 
 	"Cart price with discount" should "have 60 pence price" in {
